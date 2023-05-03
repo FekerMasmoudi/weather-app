@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,6 +6,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.css']
 })
-export class WeatherComponent {
 
-}
+  export class WeatherComponent implements OnInit {
+    public weatherSearchForm!: FormGroup;
+    constructor(private formBuilder: FormBuilder) { }
+    ngOnInit() {
+      this.weatherSearchForm = this.formBuilder.group({
+        location: ['']
+      });
+    }
+
+    sendToAPIXU(formValues:any) {
+      console.log(formValues);
+    }
+  }
+
